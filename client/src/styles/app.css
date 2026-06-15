@@ -1,0 +1,20 @@
+/* Minimal custom styles - everything else comes from Bootstrap.
+   Note: deliberately sparse, no animations/transitions/background images,
+   per the "boring, professional" requirement. */
+
+body {
+  background-color: #f5f6f8;
+}
+
+.users-table th,
+.users-table td {
+  white-space: nowrap;
+}
+
+.users-table td.text-break {
+  white-space: normal;
+}
+
+.toolbar .btn i {
+  font-size: 1rem;
+}
