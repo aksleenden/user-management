@@ -1,19 +1,17 @@
 const mongoose = require("mongoose");
 
+let connectionPromise = null;
+
 async function connectToDatabase() {
-  const uri = process.env.MONGODB_URI;
-
-  if (!uri) {
-    throw new Error("MONGODB_URI is not defined in the environment");
+  if (mongoose.connection.readyState === 1) return mongoose.connection;
+  if (!connectionPromise) {
+    mongoose.set("strictQuery", true);
+    connectionPromise = mongoose.connect(process.env.MONGODB_URI, {
+      bufferCommands: false,
+    });
   }
-
-  mongoose.set("strictQuery", true);
-
-  await mongoose.connect(uri);
-
-  console.log(
-    `Connected to MongoDB at ${uri.replace(/\/\/.*@/, "//<credentials>@")}`,
-  );
+  await connectionPromise;
+  return mongoose.connection;
 }
 
 module.exports = { connectToDatabase };
