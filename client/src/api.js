@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "https://user-management-server-kxvf.onrender.com" || "/api",
   withCredentials: true,
 });
 
