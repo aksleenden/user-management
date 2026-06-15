@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://user-management-test-phi.vercel.app/api" || "/api",
+  baseURL: "/api",
   withCredentials: true,
 });
 

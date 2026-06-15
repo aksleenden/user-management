@@ -16,8 +16,8 @@ function verifyAuthToken(token) {
 function getCookieOptions() {
   return {
     httpOnly: true,
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    secure: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     path: "/",
   };
